@@ -2,6 +2,7 @@
  * @author joe
  */
 fun main() {
-    val day3 = Day3()
-    day3.partTwo()
+    val day4 = Day4()
+    val partOne = day4.partTwo()
+
 }
