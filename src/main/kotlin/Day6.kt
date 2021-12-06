@@ -36,9 +36,8 @@ class Day6 {
         inputs.split(",").forEach {
             array[it.trim().toInt()] += 1L
         }
-        var day = 1
         var count = 0L
-        while (day <= 256) {
+        for (day in 1..256) {
             for ((index, value) in array.withIndex()) {
                 var temp = index
                 if (--temp < 0) {
@@ -51,7 +50,6 @@ class Day6 {
             array[6] += count
             array[8] += count
             count = 0
-            ++day
         }
         println(array.sum())
     }
