@@ -2,6 +2,6 @@
  * @author joe
  */
 fun main() {
-    val day = Day6()
-    day.partTwo()
+    val day = Day7()
+    day.partOne()
 }
