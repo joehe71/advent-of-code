@@ -8,29 +8,41 @@ class Day7 {
     fun partOne(): Unit {
         val inputs = File(ClassLoader.getSystemResource("day7.txt").toURI()).readText()
         val data = inputs.split(",").map { it.trim().toInt() }.sorted()
-        var total = -1
-        var target = -1
+        var min = -1
         for (i in data.indices) {
-            if (i == 0) continue
-            var tempVal = 0
-            for (j in 0 until i) {
-                tempVal += abs(data[i] - data[j])
+            var temp = 0
+            for (j in data.indices) {
+                if (i == j) continue
+                temp += abs(data[i] - data[j])
             }
-            if (total == -1) {
-                total = tempVal
-                target = data[i]
+            if (min == -1) {
+                min = temp
                 continue
             }
-            total += abs(target - data[i])
-            if (tempVal <= total) {
-                total = tempVal
-                target = data[i]
-            }
+            min = if (temp < min) temp else min
         }
-        println(total)
+        println(min)
     }
 
     fun partTwo(): Unit {
-
+        val inputs = File(ClassLoader.getSystemResource("day7.txt").toURI()).readText()
+        val data = inputs.split(",").map { it.trim().toInt() }
+        val max = data.maxOf { it }
+        var min = -1
+        for (i in 0..max) {
+            var temp = 0
+            for (j in data.indices) {
+                val abs = abs(i - data[j])
+                val res = ((abs * (abs + 1)) / 2)
+                temp += res
+            }
+            if (min == -1) {
+                min = temp
+                continue
+            }
+            min = if (temp < min) temp else min
+        }
+        println(min)
     }
+
 }
